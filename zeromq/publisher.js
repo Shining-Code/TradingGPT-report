@@ -10,6 +10,6 @@ export class PublisherZMQ {
 
   publish(topic, message) {
     this.sock.send([topic, message]);
-    console.log(`[PublisherZMQ] Published ${topic} ${JSON.stringify(message)}`);
+    //console.log(`[PublisherZMQ] Published ${topic} ${JSON.stringify(message)}`);
   }
 }

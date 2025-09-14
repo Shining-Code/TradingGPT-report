@@ -20,7 +20,7 @@ class OrderController {
 
   createOrder = (req, res) => {
     try {
-      const order = this.orderService.addOrder(req.body);
+      const order = this.orderService.placeOrder(req.body);
       res.status(201).json(order);
     } catch (error) {
       console.error("Error creating order:", error);
