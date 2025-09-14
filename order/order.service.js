@@ -155,12 +155,12 @@ class OrderService {
       createdAt: Date.now(),
     };
     if (existingPosition.quantity === 0) {
-      existingPosition.quantity = order.quantity * order.leverage;
+      existingPosition.quantity = order.quantity;
       existingPosition.avgPrice = order.fillPrice;
     } else {
       const newAvgPrice =
         existingPosition.avgPrice * existingPosition.quantity +
-        order.fillPrice * order.quantity * order.leverage;
+        order.fillPrice * order.quantity;
       existingPosition.avgPrice = newAvgPrice;
       existingPosition.takeProfit = order.takeProfit;
       existingPosition.stopLoss = order.stopLoss;
