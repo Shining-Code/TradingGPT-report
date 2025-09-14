@@ -68,6 +68,7 @@ class OrderService {
         order.takeProfit || "None"
       } | SL: ${order.stopLoss || "None"}`
     );
+    return order;
   }
 
   handlePriceUpdate(priceData) {
