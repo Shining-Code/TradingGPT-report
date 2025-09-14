@@ -16,7 +16,7 @@ class OrderService {
       // Listen for price updates from the stream client
       this.streamClient.on(TOPIC.PRICE_UPDATE, (priceData) => {
         this.handlePriceUpdate(priceData);
-        this.publisherZMQ.publish(TOPIC.PRICE_UPDATE, priceData);
+        //this.publisherZMQ.publish(TOPIC.PRICE_UPDATE, priceData);
       });
       console.log("🎯 OrderBookService listeners initialized");
     }
