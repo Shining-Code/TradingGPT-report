@@ -185,6 +185,7 @@ class OrderService {
         order.leverage
       }x | Liquidation: $${existingPosition.liquidationPrice.toFixed(2)}`
     );
+    this.publisherZMQ.publish(TOPIC.POSITION_UPDATE, existingPosition);
   }
 
   updatePnL(priceData) {
@@ -203,7 +204,7 @@ class OrderService {
           2
         )} | Price: $${priceData.close} | AvgPrice: ${position.avgPrice}`
       );
-      this.publisherZMQ.publish(TOPIC.POSITION_UPDATE, position);
+      this.publisherZMQ.publish(TOPIC.PNL_UPDATE, position);
       this.counterLog = 0;
     }
 
