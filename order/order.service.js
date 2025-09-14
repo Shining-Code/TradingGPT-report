@@ -16,6 +16,7 @@ class OrderService {
       // Listen for price updates from the stream client
       this.streamClient.on(TOPIC.PRICE_UPDATE, (priceData) => {
         this.handlePriceUpdate(priceData);
+        this.publisherZMQ.publish(TOPIC.PRICE_UPDATE, priceData);
       });
       console.log("🎯 OrderBookService listeners initialized");
     }
@@ -151,6 +152,7 @@ class OrderService {
       takeProfit: order.takeProfit,
       stopLoss: order.stopLoss,
       liquidationPrice: 0,
+      createdAt: Date.now(),
     };
     if (existingPosition.quantity === 0) {
       existingPosition.quantity = order.quantity * order.leverage;
